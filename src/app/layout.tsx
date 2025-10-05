@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import Navbar from '@/components/navbar';
 import { LeftSheet } from '@/components/client/left-sheet';
+import BreadcrumbNavbar from '@/components/breadcrumb-navbar';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
+          <BreadcrumbNavbar />
           <LeftSheet />
           <main className="max-w-5xl mx-auto p-4">{children}</main>
         </ThemeProvider>
