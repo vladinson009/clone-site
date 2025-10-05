@@ -8,13 +8,12 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import BreadcrumbNavbarItem from './breadcrumb-navbar-item';
 
 export default function BreadcrumbNavbar() {
   const pathname = usePathname();
-  // const queryParams = useSearchParams();
+  // const queryParams = useSearchParams(); //TODO: In case of query
   const parts = pathname.split('/').filter(Boolean);
   const isParts = parts.length > 0;
   console.log(parts);
