@@ -19,7 +19,7 @@ export default function Navbar() {
             className="rounded-sm"
           />
           <span className="hidden md:inline text-xl font-bold">
-            Next<span className="text-orange-500">Hub</span>
+            Next<span className="bg-[#FF9000] text-black px-1 rounded">Hub</span>
           </span>
         </Link>
       </div>
