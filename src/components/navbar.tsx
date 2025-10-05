@@ -49,7 +49,7 @@ export default function Navbar() {
 
         {/* Auth button (replace with avatar if logged in) */}
         <Button variant="outline" asChild>
-          <Link href="/authentication">
+          <Link href="/">
             <LogIn className="w-4 h-4 mr-1" /> Login
           </Link>
         </Button>
