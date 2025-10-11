@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -8,15 +9,27 @@ import {
   FieldSeparator,
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
+import Link from 'next/link';
 
-export function LoginForm({ className, ...props }: React.ComponentProps<'form'>) {
+interface AuthFormProps extends React.ComponentProps<'form'> {
+  mode: string;
+}
+
+export default function AuthForm({ className, ...props }: AuthFormProps) {
+  const mode = props.mode;
+  const signInMode = mode === 'signin';
+
   return (
     <form className={cn('flex flex-col gap-6', className)} {...props}>
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Login to your account</h1>
+          <h1 className="text-2xl font-bold">
+            {signInMode ? 'Sign in to your account' : 'Sign up now'}
+          </h1>
           <p className="text-muted-foreground text-sm text-balance">
-            Enter your email below to login to your account
+            {signInMode
+              ? 'Enter your email below to login to your account'
+              : 'Create your new profile with us'}
           </p>
         </div>
         <Field>
@@ -26,17 +39,27 @@ export function LoginForm({ className, ...props }: React.ComponentProps<'form'>)
         <Field>
           <div className="flex items-center">
             <FieldLabel htmlFor="password">Password</FieldLabel>
-            <a
-              href="#"
-              className="ml-auto text-sm underline-offset-4 hover:underline"
-            >
-              Forgot your password?
-            </a>
+            {signInMode && (
+              <a
+                href="#"
+                className="ml-auto text-sm underline-offset-4 hover:underline"
+              >
+                Forgot your password?
+              </a>
+            )}
           </div>
           <Input id="password" type="password" required />
         </Field>
+        {!signInMode && (
+          <Field>
+            <div className="flex items-center">
+              <FieldLabel htmlFor="repass">Repeat password</FieldLabel>
+            </div>
+            <Input id="repass" type="password" required />
+          </Field>
+        )}
         <Field>
-          <Button type="submit">Login</Button>
+          <Button type="submit">{signInMode ? 'Sign In' : 'Sign Up'}</Button>
         </Field>
         <FieldSeparator>Or continue with</FieldSeparator>
         <Field>
@@ -47,13 +70,16 @@ export function LoginForm({ className, ...props }: React.ComponentProps<'form'>)
                 fill="currentColor"
               />
             </svg>
-            Login with GitHub
+            GitHub
           </Button>
           <FieldDescription className="text-center">
-            Don&apos;t have an account?{' '}
-            <a href="#" className="underline underline-offset-4">
-              Sign up
-            </a>
+            {signInMode ? "Don't have an account? " : 'Already have an account? '}
+            <Link
+              href={`?mode=${signInMode ? 'signup' : 'signin'}`}
+              className="underline underline-offset-4"
+            >
+              {signInMode ? 'Sign Up' : 'Sign In'}
+            </Link>
           </FieldDescription>
         </Field>
       </FieldGroup>

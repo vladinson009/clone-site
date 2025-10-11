@@ -16,7 +16,6 @@ export default function BreadcrumbNavbar() {
   // const queryParams = useSearchParams(); //TODO: In case of query
   const parts = pathname.split('/').filter(Boolean);
   const isParts = parts.length > 0;
-  console.log(parts);
 
   return (
     <Breadcrumb className="flex justify-center">
