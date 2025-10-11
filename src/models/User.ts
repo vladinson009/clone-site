@@ -1,5 +1,6 @@
-import { Schema, CallbackError, model } from 'mongoose';
+import { Schema, CallbackError, model, models } from 'mongoose';
 import bcrypt from 'bcrypt';
+
 const userSchema = new Schema({
   username: {
     type: String,
@@ -24,4 +25,4 @@ userSchema.pre('save', async function (next) {
   }
 });
 
-export default model('user', userSchema);
+export default models.user || model('user', userSchema);

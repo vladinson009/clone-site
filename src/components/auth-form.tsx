@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -9,17 +10,35 @@ import {
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { registerForm } from '@/actions/authForm';
+import { useActionState } from 'react';
+import type { UserRegister } from '@/types/user';
 
 interface AuthFormProps extends React.ComponentProps<'form'> {
   mode: string;
 }
+type InitialState = UserRegister & { error: null | string };
 
 export default function AuthForm({ className, ...props }: AuthFormProps) {
   const mode = props.mode;
   const signInMode = mode === 'signin';
 
+  const initialState: InitialState = {
+    email: '',
+    username: '',
+    password: '',
+    repass: '',
+    error: null,
+  };
+
+  const [state, formAction, isPending] = useActionState(registerForm, initialState);
+
   return (
-    <form className={cn('flex flex-col gap-6', className)} {...props}>
+    <form
+      action={formAction}
+      className={cn('flex flex-col gap-6', className)}
+      {...props}
+    >
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">
@@ -33,8 +52,28 @@ export default function AuthForm({ className, ...props }: AuthFormProps) {
         </div>
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input
+            name="email"
+            id="email"
+            type="email"
+            placeholder="m@example.com"
+            required
+            defaultValue={state.email}
+          />
         </Field>
+        {!signInMode && (
+          <Field>
+            <FieldLabel htmlFor="username">Username</FieldLabel>
+            <Input
+              name="username"
+              id="username"
+              type="text"
+              placeholder="johnDoe13"
+              required
+              defaultValue={state.username}
+            />
+          </Field>
+        )}
         <Field>
           <div className="flex items-center">
             <FieldLabel htmlFor="password">Password</FieldLabel>
@@ -47,18 +86,25 @@ export default function AuthForm({ className, ...props }: AuthFormProps) {
               </a>
             )}
           </div>
-          <Input id="password" type="password" required />
+          <Input name="password" id="password" type="password" required />
         </Field>
         {!signInMode && (
           <Field>
             <div className="flex items-center">
               <FieldLabel htmlFor="repass">Repeat password</FieldLabel>
             </div>
-            <Input id="repass" type="password" required />
+            <Input name="repass" id="repass" type="password" required />
+          </Field>
+        )}
+        {state.error && (
+          <Field>
+            <p className="text-red-500">{state.error}</p>
           </Field>
         )}
         <Field>
-          <Button type="submit">{signInMode ? 'Sign In' : 'Sign Up'}</Button>
+          <Button disabled={isPending} type="submit">
+            {signInMode ? 'Sign In' : 'Sign Up'}
+          </Button>
         </Field>
         <FieldSeparator>Or continue with</FieldSeparator>
         <Field>
