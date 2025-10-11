@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
-import Navbar from '@/components/navbar';
+import Navbar from '@/components/navbar/navbar';
 import { LeftSheet } from '@/components/client/left-sheet';
-import BreadcrumbNavbar from '@/components/breadcrumb-navbar';
+import BreadcrumbNavbar from '@/components/navbar/breadcrumb-navbar';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

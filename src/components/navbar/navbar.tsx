@@ -3,9 +3,9 @@ import { Input } from '@/components/ui/input';
 import { Bell, LogIn, Plus, Search } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ThemeToggle } from './client/theme-toggle';
+import { ThemeToggle } from '../client/theme-toggle';
 import { auth } from '@/auth';
-import { Avatar } from './ui/avatar';
+import { Avatar } from '../ui/avatar';
 import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { logout } from '@/actions/auth';
 

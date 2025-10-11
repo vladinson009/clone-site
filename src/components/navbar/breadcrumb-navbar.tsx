@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import BreadcrumbNavbarItem from './breadcrumb-navbar-item';
+import BreadcrumbNavbarItem from '../navbar/breadcrumb-navbar-item';
 
 export default function BreadcrumbNavbar() {
   const pathname = usePathname();

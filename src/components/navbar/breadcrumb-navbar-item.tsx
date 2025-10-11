@@ -3,7 +3,7 @@ import {
   BreadcrumbLink,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from './ui/breadcrumb';
+} from '../ui/breadcrumb';
 import Link from 'next/link';
 
 interface Props {
