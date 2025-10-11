@@ -1,5 +1,10 @@
-import AuthForm from '@/components/client/auth-form';
+import AuthForm from '@/components/auth-form';
 import { redirect } from 'next/navigation';
+
+export const metadata = {
+  title: 'Authentication',
+  description: 'Login to explore more from our web site',
+};
 
 type LoginPageProps = {
   searchParams: {
@@ -8,7 +13,6 @@ type LoginPageProps = {
 };
 export default async function LoginPage({ searchParams }: LoginPageProps) {
   const { mode } = await searchParams;
-  console.log(mode);
 
   if (!mode || (mode !== 'signin' && mode !== 'signup')) {
     redirect('?mode=signin');

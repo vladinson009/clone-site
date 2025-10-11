@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
-
-export default async function Home() {
+export default function Home() {
   return (
     <>
       <section className="text-center py-20">
@@ -12,7 +11,7 @@ export default async function Home() {
           The next-generation community platform built with Next.js and shadcn/ui.
         </p>
         <div className="mt-6 flex justify-center gap-4">
-          <Button>Get Started</Button>
+          <Button>Create Boilerplate record</Button>
           <Button variant="outline">Learn More</Button>
         </div>
       </section>
