@@ -4,8 +4,12 @@ import { Bell, LogIn, Plus, Search } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ThemeToggle } from '../client/theme-toggle';
+import { getAuthUser } from '@/lib/authCookie';
+import LogoutBtn from '../client/logout-btn';
 
 export default async function Navbar() {
+  const user = await getAuthUser();
+
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between border-b bg-background px-4 md:px-8 py-2 shadow-sm">
       {/* Left: Logo + name */}
@@ -48,12 +52,19 @@ export default async function Navbar() {
         <ThemeToggle />
 
         {/* Auth button (replace with avatar if logged in) */}
-
-        <Button variant="outline" asChild>
-          <Link href="/authentication">
-            <LogIn className="w-4 h-4 mr-1" /> Sign in
-          </Link>
-        </Button>
+        {user && (
+          <>
+            <span>Welcome, {user.email}</span>
+            <LogoutBtn />
+          </>
+        )}
+        {!user && (
+          <Button variant="outline" asChild>
+            <Link href="/authentication">
+              <LogIn className="w-4 h-4 mr-1" /> Sign in
+            </Link>
+          </Button>
+        )}
       </div>
     </nav>
   );
