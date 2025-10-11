@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { githubLogin } from '@/actions/auth';
+import { login } from '@/actions/auth';
 import { Button } from '../ui/button';
 
 export default function GitHubLoginButton() {
@@ -10,7 +10,7 @@ export default function GitHubLoginButton() {
   const handleGitHubLogin = async () => {
     try {
       setIsLoading(true);
-      await githubLogin();
+      await login('github');
     } catch (err) {
       console.error('GitHub login failed:', err);
     } finally {

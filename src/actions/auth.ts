@@ -2,8 +2,8 @@
 
 import { signIn, signOut } from '@/auth';
 
-export async function githubLogin() {
-  await signIn('github', { redirectTo: '/' });
+export async function login(provider: string) {
+  await signIn(provider, { redirectTo: '/' });
 }
 export async function logout() {
   await signOut({ redirectTo: '/' });
