@@ -3,8 +3,6 @@
 import { createAuthToken, deleteAuthToken, getAuthUser } from '@/lib/authCookie';
 import { loginUser, logoutUserInvalidation, registerUser } from '@/services/userApi';
 import { UserLogin, UserRegister } from '@/types/user';
-import mongoose from 'mongoose';
-import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 type RegisterPrevState = UserRegister & { error: null | string };

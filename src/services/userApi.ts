@@ -25,6 +25,7 @@ export async function loginUser(userData: UserLogin) {
   try {
     await connectDB();
   } catch (error) {
+    console.log(error);
     throw new Error('DB Connection failed');
   }
 
@@ -56,6 +57,7 @@ export async function registerUser(userData: Omit<UserRegister, 'repass'>) {
   try {
     await connectDB();
   } catch (error) {
+    console.log(error);
     throw new Error('DB Connection failed');
   }
   await isUser(userData.email, userData.username);

@@ -13,6 +13,7 @@ export async function getAuthUser(): Promise<UserType | null> {
     const decoded = jwt.verify(token, JWT_SECRET) as UserType;
     return decoded;
   } catch (error) {
+    console.log(error);
     cookieStore.delete('session');
     return null;
   }

@@ -20,7 +20,6 @@ import { useActionState, useEffect } from 'react';
 import { loginForm } from '@/actions/authFormActions';
 import Link from 'next/link';
 import { toast } from 'sonner';
-import { Toaster } from './ui/sonner';
 import { UserLogin } from '@/types/user';
 
 type InitialState = UserLogin & { error: null | string };
