@@ -1,5 +1,3 @@
-import { Types } from 'mongoose';
-
 export type UserType = {
   _id: string;
   email: string;
@@ -17,11 +15,11 @@ export type UserRegister = {
   password: string;
   repass: string;
 };
-export interface AuthUser {
-  _id: string;
-  username: string;
-  email: string;
-  role?: string;
-  iat?: number; // issued at
-  exp?: number; // expiration timestamp
-}
+// export interface AuthUser {
+//   _id: string;
+//   email: string;
+//   username: string;
+//   role?: string;
+//   iat?: number; // issued at
+//   exp?: number; // expiration timestamp
+// }

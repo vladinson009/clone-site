@@ -15,18 +15,27 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      minLength: USERNAME_MIN_LENGTH,
+      minLength: [
+        USERNAME_MIN_LENGTH,
+        `Username shoud be at least ${USERNAME_MIN_LENGTH} characters long.`,
+      ],
     },
     email: {
       type: String,
       required: true,
       unique: true,
-      minLength: EMAIL_MIN_LENGTH,
+      minLength: [
+        EMAIL_MIN_LENGTH,
+        `Email should be at least ${EMAIL_MIN_LENGTH} characters long.`,
+      ],
     },
     password: {
       type: String,
       required: true,
-      minLength: PASSWORD_MIN_LENGTH,
+      minLength: [
+        PASSWORD_MIN_LENGTH,
+        `Password shoud be at least ${EMAIL_MIN_LENGTH} characters long.`,
+      ],
     },
     role: {
       type: String,

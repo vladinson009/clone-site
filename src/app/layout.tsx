@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import Navbar from '@/components/navbar/navbar';
 import { LeftSheet } from '@/components/client/left-sheet';
 import BreadcrumbNavbar from '@/components/navbar/breadcrumb-navbar';
+import { Toaster } from '@/components/ui/sonner';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,6 +35,7 @@ export default function RootLayout({
           <BreadcrumbNavbar />
           <LeftSheet />
           <main className="max-w-5xl mx-auto p-4">{children}</main>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

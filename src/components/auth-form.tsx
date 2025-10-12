@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
-import { registerForm } from '@/actions/authForm';
+import { registerForm } from '@/actions/authFormActions';
 import { useActionState } from 'react';
 import type { UserRegister } from '@/types/user';
 

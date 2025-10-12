@@ -1,5 +1,5 @@
 'use client';
-import { logoutUser } from '@/actions/authForm';
+import { logoutUser } from '@/actions/authFormActions';
 import { Button } from '../ui/button';
 import { LogOut } from 'lucide-react';
 

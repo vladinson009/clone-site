@@ -1,4 +1,5 @@
-import AuthForm from '@/components/auth-form';
+import LoginForm from '@/components/login-form';
+import RegisterForm from '@/components/register-form';
 import { redirect } from 'next/navigation';
 
 export const metadata = {
@@ -18,8 +19,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
     redirect('?mode=signin');
   }
   return (
-    <div className="flex items-center justify-center p-4">
-      <AuthForm mode={mode} className="w-full max-w-md shadow p-6" />
+    <div className="flex items-center justify-center p-4 ">
+      <div className="w-full max-w-md shadow p-6">
+        {mode === 'signup' ? <RegisterForm /> : <LoginForm />}
+      </div>
     </div>
   );
 }

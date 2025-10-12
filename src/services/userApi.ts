@@ -1,6 +1,8 @@
 import { connectDB, disconnectDB } from '@/lib/mongoose';
 import User from '@/models/User';
 import { UserLogin, UserRegister, UserType } from '@/types/user';
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 async function isUser(email: string, username?: string) {
   try {
@@ -31,6 +33,11 @@ export async function loginUser(userData: UserLogin) {
     if (!user) {
       throw new Error('Invalid email or password!');
     }
+    const isValidPassword = await bcrypt.compare(userData.password, user.password);
+    if (!isValidPassword) {
+      throw new Error('Invalid email or password');
+    }
+
     const returnValue: UserType = {
       _id: user._id.toString(),
       email: user.email,
@@ -64,6 +71,17 @@ export async function registerUser(userData: Omit<UserRegister, 'repass'>) {
     await disconnectDB();
     return returnValue;
   } catch (error) {
-    throw error;
+    if (error instanceof mongoose.Error.ValidationError) {
+      const errors = Object.values(error.errors).map((el) => el.message);
+      throw new Error(errors.join(', '));
+    } else {
+      console.log('Uncatched error from MONGOOSE SCHEMA');
+
+      console.log(error);
+      throw error;
+    }
   }
+}
+export function logoutUserInvalidation(userId: string) {
+  return User.findByIdAndUpdate(userId, { $inc: { tokenVersion: 1 } });
 }
