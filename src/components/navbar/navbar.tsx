@@ -60,7 +60,7 @@ export default async function Navbar() {
         )}
         {!user && (
           <Button variant="outline" asChild>
-            <Link href="/authentication">
+            <Link href="/authentication?mode=signin">
               <LogIn className="w-4 h-4 mr-1" /> Sign in
             </Link>
           </Button>

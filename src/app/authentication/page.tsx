@@ -1,5 +1,5 @@
-import LoginForm from '@/components/login-form';
-import RegisterForm from '@/components/register-form';
+import LoginForm from '@/components/client/login-form';
+import RegisterForm from '@/components/client/register-form';
 import { redirect } from 'next/navigation';
 
 export const metadata = {

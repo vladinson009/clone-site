@@ -17,6 +17,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { PASSWORD_MIN_LENGTH } from '@/constants/user-constants';
 import { UserRegister } from '@/types/user';
+import Link from 'next/link';
 import { useActionState, useEffect } from 'react';
 import { toast } from 'sonner';
 
@@ -111,7 +112,7 @@ export default function RegisterForm({
                   Sign up with Google
                 </Button>
                 <FieldDescription className="px-6 text-center">
-                  Already have an account? <a href="#">Sign in</a>
+                  Already have an account? <Link href="?mode=signin">Sign in</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>
