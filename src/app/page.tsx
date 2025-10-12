@@ -4,7 +4,7 @@ export default function Home() {
   console.log('ENVIRONMENT:', process.env.NODE_ENV);
   return (
     <section className="text-center py-20">
-      <h1 className="text-4xl font-bold tracking-tight">
+      {/* <h1 className="text-4xl font-bold tracking-tight">
         Welcome to Next
         <span className="bg-[#FF9000] text-black px-2 rounded">Hub</span>
       </h1>
@@ -15,7 +15,7 @@ export default function Home() {
         <Button>Create record</Button>
         <Button>{process.env.TEST}</Button>
         <Button variant="outline">Learn More</Button>
-      </div>
+      </div> */}
       <HeroSection />
     </section>
   );
