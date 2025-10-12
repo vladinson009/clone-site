@@ -58,7 +58,7 @@ export default function LoginFormPage({
                       fill="currentColor"
                     />
                   </svg>
-                  Login with Apple
+                  Continue with Apple
                 </Button>
                 <Button disabled={isPending} variant="outline" type="button">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -67,7 +67,7 @@ export default function LoginFormPage({
                       fill="currentColor"
                     />
                   </svg>
-                  Login with Google
+                  Continue with Google
                 </Button>
               </Field>
               <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
