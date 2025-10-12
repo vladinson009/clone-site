@@ -11,7 +11,8 @@ export default function Home() {
           The next-generation community platform built with Next.js and shadcn/ui.
         </p>
         <div className="mt-6 flex justify-center gap-4">
-          <Button>Create Boilerplate record</Button>
+          <Button>Create record</Button>
+          <Button>{process.env.TEST}</Button>
           <Button variant="outline">Learn More</Button>
         </div>
       </section>
