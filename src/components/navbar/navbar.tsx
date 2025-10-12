@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ThemeToggle } from '../client/theme-toggle';
 import { getAuthUser } from '@/lib/authCookie';
 import LogoutBtn from '../client/logout-btn';
+import LogoLink from '../logo-link';
 
 export default async function Navbar() {
   const user = await getAuthUser();
@@ -13,21 +14,7 @@ export default async function Navbar() {
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between border-b bg-background px-4 md:px-8 py-2 shadow-sm">
       {/* Left: Logo + name */}
-      <div className="flex items-center gap-2">
-        <Link href="/" className="flex items-center gap-1">
-          <Image
-            src="/globe.svg" // your logo path
-            alt="Logo"
-            width={32}
-            height={32}
-            className="rounded-sm"
-          />
-          <span className="hidden md:inline text-xl font-bold">
-            Next<span className="bg-[#FF9000] text-black px-1 rounded">Hub</span>
-          </span>
-        </Link>
-      </div>
-
+      <LogoLink />
       {/* Middle: Search bar */}
       <div className="hidden md:flex flex-1 max-w-lg mx-4">
         <div className="relative w-full">

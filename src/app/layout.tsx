@@ -6,6 +6,7 @@ import Navbar from '@/components/navbar/navbar';
 import { LeftSheet } from '@/components/client/left-sheet';
 import BreadcrumbNavbar from '@/components/navbar/breadcrumb-navbar';
 import { Toaster } from '@/components/ui/sonner';
+import Footer from '@/components/footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,10 +32,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
-          <BreadcrumbNavbar />
-          <LeftSheet />
+          <header>
+            <Navbar />
+            <BreadcrumbNavbar />
+            <LeftSheet />
+          </header>
           <main className="max-w-5xl mx-auto p-4">{children}</main>
+          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>

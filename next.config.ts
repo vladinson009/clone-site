@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
 
   reactStrictMode: false,
   images: {
-    domains: ['cdn.dummyjson.com', 'github.com'],
+    domains: [
+      'cdn.dummyjson.com',
+      'github.com',
+      'cdn.shadcnstudio.com',
+      'images.unsplash.com',
+    ],
   },
 };
 
