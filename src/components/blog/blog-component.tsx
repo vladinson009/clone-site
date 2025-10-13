@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import ProgressDemo from '../client/progressBar';
-import BlogPostCard from '../client/blog-post-card';
+import BlogPostCards from './blog-post-cards';
 
 const Blog = async () => {
   return (
@@ -22,7 +22,7 @@ const Blog = async () => {
 
         <Suspense fallback={<ProgressDemo />}>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <BlogPostCard />
+            <BlogPostCards />
           </div>
         </Suspense>
       </div>

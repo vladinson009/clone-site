@@ -9,12 +9,8 @@ import {
   CardTitle,
 } from '../ui/card';
 import { getBlogs } from '@/services/blogsApi';
-type BlogCard = {
-  imageLink: string;
-  title: string;
-  description: string;
-};
-export default async function BlogPostCard() {
+
+export default async function BlogPostCards() {
   const blogCards = await getBlogs();
   return blogCards.map((item, index) => (
     <Card key={index} className="pt-0 shadow-none max-lg:last:col-span-full">

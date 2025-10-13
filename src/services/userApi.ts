@@ -1,4 +1,4 @@
-import { connectDB, disconnectDB } from '@/lib/mongoose';
+import { connectDB } from '@/lib/mongoose';
 import User from '@/models/User';
 import { UserLogin, UserRegister, UserType } from '@/types/user';
 import mongoose from 'mongoose';
@@ -46,7 +46,6 @@ export async function loginUser(userData: UserLogin) {
       tokenVersion: user.tokenVersion,
       role: user.role,
     };
-    await disconnectDB();
     return returnValue;
   } catch (error) {
     throw error;
@@ -70,7 +69,6 @@ export async function registerUser(userData: Omit<UserRegister, 'repass'>) {
       tokenVersion: user.tokenVersion,
       role: user.role,
     };
-    await disconnectDB();
     return returnValue;
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
@@ -84,6 +82,7 @@ export async function registerUser(userData: Omit<UserRegister, 'repass'>) {
     }
   }
 }
-export function logoutUserInvalidation(userId: string) {
+export async function logoutUserInvalidation(userId: string) {
+  await connectDB();
   return User.findByIdAndUpdate(userId, { $inc: { tokenVersion: 1 } });
 }

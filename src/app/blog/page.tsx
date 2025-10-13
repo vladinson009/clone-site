@@ -1,5 +1,7 @@
 import Blog from '@/components/blog/blog-component';
 import CreateBlogForm from '@/components/blog/create-blog';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const blogCards = [
   {
@@ -31,7 +33,10 @@ const blogCards = [
 export default async function BlogPage() {
   return (
     <>
-      <CreateBlogForm />
+      {/* <CreateBlogForm /> */}
+      <Button asChild>
+        <Link href="/blog/create">CREATE RECORD</Link>
+      </Button>
       <Blog />
     </>
   );

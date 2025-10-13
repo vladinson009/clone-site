@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const Error = () => {
   return (
@@ -11,7 +12,7 @@ const Error = () => {
           home.
         </p>
         <Button asChild size="lg" className="rounded-lg text-base shadow-sm">
-          <a href="#">Back to home page</a>
+          <Link href="/">Back to home page</Link>
         </Button>
       </div>
 
