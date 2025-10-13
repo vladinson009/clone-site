@@ -66,15 +66,6 @@ export async function registerForm(
   }
   redirect('/');
 }
-export async function logoutUser() {
-  const token = await getAuthUser();
-  if (token) {
-    logoutUserInvalidation(token._id);
-  }
-  await deleteAuthToken();
-  redirect('/');
-}
-
 export async function loginForm(prevState: LoginPrevState, formData: FormData) {
   const emailInput = formData.get('email');
   const passwordInput = formData.get('password');
@@ -109,5 +100,13 @@ export async function loginForm(prevState: LoginPrevState, formData: FormData) {
       };
     }
   }
+  redirect('/');
+}
+export async function logoutUser() {
+  const token = await getAuthUser();
+  if (token) {
+    await logoutUserInvalidation(token._id);
+  }
+  await deleteAuthToken();
   redirect('/');
 }

@@ -19,6 +19,13 @@ export function LeftSheet() {
   function handleCloseClick() {
     setIsOpen(false);
   }
+
+  const navItems = [
+    { name: 'Home', href: '/' },
+    { name: 'Products', href: '/products' },
+    { name: 'Blog', href: '/blog' },
+  ];
+
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
@@ -33,7 +40,14 @@ export function LeftSheet() {
           {/* ✅ Fix */}
         </SheetHeader>
         <div className="flex flex-col gap-3 mt-4">
-          <Button variant="ghost">
+          {navItems.map((item) => (
+            <LeftSheetNav
+              key={item.href}
+              navItem={item}
+              handleCloseClick={handleCloseClick}
+            />
+          ))}
+          {/* <Button variant="ghost">
             <Link onClick={handleCloseClick} href="/">
               Home
             </Link>
@@ -42,9 +56,27 @@ export function LeftSheet() {
             <Link onClick={handleCloseClick} href="/products">
               Products
             </Link>
-          </Button>
+          </Button> */}
         </div>
       </SheetContent>
     </Sheet>
+  );
+}
+
+type LeftSheetNavType = {
+  navItem: {
+    href: string;
+    name: string;
+  };
+  handleCloseClick: () => void;
+};
+
+function LeftSheetNav({ handleCloseClick, navItem }: LeftSheetNavType) {
+  return (
+    <Button variant="ghost">
+      <Link onClick={handleCloseClick} href={navItem.href}>
+        {navItem.name}
+      </Link>
+    </Button>
   );
 }
