@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
       'cdn.shadcnstudio.com',
       'images.unsplash.com',
     ],
+    // remotePatterns: [{ hostname: 'cdn.dummyjson.com' }], // Thi is demo from the course
   },
 };
 
