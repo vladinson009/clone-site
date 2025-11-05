@@ -7,6 +7,7 @@ import { LeftSheet } from '@/components/client/left-sheet';
 import BreadcrumbNavbar from '@/components/navbar/breadcrumb-navbar';
 import { Toaster } from '@/components/ui/sonner';
 import Footer from '@/components/footer';
+import { LightRays } from '@/components/ui/light-rays';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -37,6 +38,7 @@ export default function RootLayout({
             <BreadcrumbNavbar />
             <LeftSheet />
           </header>
+          <LightRays />
           <main className="max-w-5xl mx-auto p-4">{children}</main>
           <Footer />
           <Toaster />
